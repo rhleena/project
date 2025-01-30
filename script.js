@@ -25,68 +25,43 @@ const keywordsMapping = {
     "Mendengarkan": ["#Listener", "#Empathy", "#Understanding"]
 };
 
-// LOGIN DENGAN USERNAME
+// LOGIN DENGAN EMAIL
 async function login() {
-    const username = document.getElementById("username").value.trim();
-    const password = document.getElementById("password").value.trim();
-
-    console.log("Login attempt:", username, password);
-
-    // Cari email berdasarkan username di database
-    let { data, error } = await supabase
-        .from("users")
-        .select("email")
-        .eq("username", username)
-        .single();
-
-    if (error || !data) {
-        console.error("Username tidak ditemukan:", error);
-        alert("Username tidak ditemukan. Silakan register.");
-        return;
-    }
-
-    const email = data.email;
-
-    // Login dengan email yang ditemukan
-    const { data: loginData, error: loginError } = await supabase.auth.signInWithPassword({ email, password });
+    const email = document.getElementById("email").value.trim()
+    const password = document.getElementById("password").value.trim()
+  
+    console.log("Login attempt:", email)
+  
+    const { data: loginData, error: loginError } = await supabase.auth.signInWithPassword({ email, password })
     if (loginError) {
-        console.error("Login failed:", loginError);
-        alert("Login gagal: " + loginError.message);
-        return;
+      console.error("Login failed:", loginError)
+      alert("Login gagal: " + loginError.message)
+      return
     }
-
-    console.log("Login successful:", loginData);
-    localStorage.setItem("user", JSON.stringify(loginData.user));
-    startQuiz();
-}
-
-// REGISTER DENGAN USERNAME
-async function register() {
-    const username = document.getElementById("username").value.trim();
-    const password = document.getElementById("password").value.trim();
-    const email = username + "@quizapp.com"; // Gunakan username untuk membuat email fiktif
-
-    console.log("Register attempt:", username, email, password);
-
+  
+    console.log("Login successful:", loginData)
+    localStorage.setItem("user", JSON.stringify(loginData.user))
+    startQuiz()
+  }
+  
+  // REGISTER DENGAN EMAIL
+  async function register() {
+    const email = document.getElementById("email").value.trim()
+    const password = document.getElementById("password").value.trim()
+  
+    console.log("Register attempt:", email)
+  
     // Buat akun di Supabase Authentication
-    const { data, error } = await supabase.auth.signUp({ email, password });
+    const { data, error } = await supabase.auth.signUp({ email, password })
     if (error) {
-        console.error("Register failed:", error);
-        alert("Gagal register: " + error.message);
-        return;
+      console.error("Register failed:", error)
+      alert("Gagal register: " + error.message)
+      return
     }
-
-    console.log("Register successful:", data);
-
-    // Simpan username dan email di tabel users
-    const { error: userError } = await supabase.from("users").insert([{ username, email }]);
-
-    if (userError) {
-        console.error("Gagal menyimpan username:", userError);
-    }
-
-    alert("Registrasi berhasil! Silakan login.");
-}
+  
+    console.log("Register successful:", data)
+    alert("Registrasi berhasil! Silakan login.")
+  }
 
 // LOGOUT
 async function logout() {
