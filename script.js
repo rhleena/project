@@ -11,18 +11,18 @@ let currentQuestionIndex = 0;
 let answers = [];
 
 const questions = [
-    { question: "Kamu lebih suka bekerja sendiri atau dalam tim?", options: ["Sendiri", "Dalam tim"] },
-    { question: "Apakah kamu lebih suka rutinitas atau tantangan baru?", options: ["Rutinitas", "Tantangan baru"] },
-    { question: "Kamu lebih suka berbicara atau mendengarkan?", options: ["Berbicara", "Mendengarkan"] }
+    { question: "Kamu lebih sering melihat insight atau hanya memposting konten?", options: ["Melihat insight", "Hanya memposting"] },
+    { question: "Apakah kamu lebih fokus pada reach atau engagement?", options: ["Reach", "Engagement"] },
+    { question: "Kamu lebih sering menggunakan hashtag atau tag akun lain?", options: ["Hashtag", "Tag akun lain"] }
 ];
 
 const keywordsMapping = {
-    "Sendiri": ["#Introvert", "#Independent", "#Thinker"],
-    "Dalam tim": ["#Teamwork", "#Sociable", "#Extrovert"],
-    "Rutinitas": ["#Planner", "#Discipline", "#Routine"],
-    "Tantangan baru": ["#Adventurer", "#RiskTaker", "#Growth"],
-    "Berbicara": ["#Speaker", "#Leader", "#Expressive"],
-    "Mendengarkan": ["#Listener", "#Empathy", "#Understanding"]
+    "Melihat insight": ["#Analytics", "#DataDriven", "#Strategy"],
+    "Hanya memposting": ["#CasualPosting", "#NoStrategy", "#ContentOnly"],
+    "Reach": ["#ViralPotential", "#NewAudience", "#BrandAwareness"],
+    "Engagement": ["#CommunityBuilding", "#LoyalFollowers", "#Interactive"],
+    "Hashtag": ["#HashtagStrategy", "#SEO", "#Discoverability"],
+    "Tag akun lain": ["#Collaboration", "#Networking", "#Exposure"]
 };
 
 // LOGIN DENGAN EMAIL
