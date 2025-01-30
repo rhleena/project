@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kuis MBTI Style - Supabase (Username Login)</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- LOGIN -->
+    <div id="login-container">
+        <h2>Login</h2>
+        <input type="text" id="username" placeholder="Masukkan Username">
+        <input type="password" id="password" placeholder="Masukkan Password">
+        <button onclick="login()">Login</button>
+        <button onclick="register()">Register</button>
+    </div>
+
+    <!-- KUIS -->
+    <div id="quiz-container" style="display: none;">
+        <h2>Kuis Kepribadian</h2>
+        <div id="question"></div>
+        <div id="options"></div>
+        <button id="next-btn" onclick="nextQuestion()">Lanjut</button>
+    </div>
+
+    <!-- HASIL -->
+    <div id="result-container" style="display: none;">
+        <h2>Hasil Kuis</h2>
+        <p id="result-text"></p>
+        <h3>Rekomendasi Keywords:</h3>
+        <p id="keywords"></p>
+        <button onclick="restartQuiz()">Coba Lagi</button>
+        <button onclick="logout()">Logout</button>
+    </div>
+
+    <!-- Load Supabase SDK terlebih dahulu -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    <script src="script.js"></script>
+
+</body>
+</html>
