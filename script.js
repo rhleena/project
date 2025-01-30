@@ -128,3 +128,11 @@ async function showResult() {
 
     await supabase.from("quiz_results").insert([{ user_email: user.email, result_keywords: uniqueKeywords.join(", ") }]);
 }
+
+function restartQuiz() {
+    currentQuestionIndex = 0
+    answers = []
+    document.getElementById("result-container").style.display = "none"
+    document.getElementById("quiz-container").style.display = "block"
+    showQuestion()
+  }  
